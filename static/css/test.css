@@ -1,0 +1,29 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.greeting {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.user {
+    color: #990099;
+}
+
+.page-title {
+    font-weight: 700;
+    color: #212529;
+}
+
+.content-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-brand {
+    font-weight: bold;
+}

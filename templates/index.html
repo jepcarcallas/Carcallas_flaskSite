@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="content-card">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h1 class="page-title">
+            Items List
+        </h1>
+
+        <a
+            href="{{ url_for('create') }}"
+            class="btn btn-primary"
+        >
+            + Add New Item
+        </a>
+
+    </div>
+
+    {% if items %}
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered table-striped">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Item Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for item in items %}
+
+                <tr>
+
+                    <td>
+                        {{ item.idNum }}
+                    </td>
+
+                    <td>
+                        {{ item.name }}
+                    </td>
+
+                    <td>
+
+                        <div class="d-flex gap-2">
+
+                            <a
+                                href="{{ url_for('update', idNum=item.idNum) }}"
+                                class="btn btn-warning btn-sm"
+                            >
+                                Edit
+                            </a>
+
+                            <form
+                                method="POST"
+                                action="{{ url_for('delete', idNum=item.idNum) }}"
+                                onsubmit="return confirm('Are you sure you want to delete this item?');"
+                            >
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-danger btn-sm"
+                                >
+                                    Delete
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+        <div class="alert alert-info">
+            No items found. Click Add New Item to create one.
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
